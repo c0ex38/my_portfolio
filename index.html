@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Çağrı Özay - Full Stack Developer, AI/ML, Bulut Mimarisi. Modern teknolojilerle yenilikçi çözümler üreten bilgisayar mühendisi."
+    />
+    <title>ÇAĞRI ÖZAY - Elite Portfolio</title>
+    <!-- Favicon - Cyber Themed -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>💻</text></svg>"
+    />
+    <!-- Modular CSS Files -->
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+  </head>
+  <body>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="custom-cursor"></div>
+
+    <!-- Hacker Loading Screen (with Login) -->
+    <div class="loading-screen" id="loading-screen">
+      <!-- Login Section (First Phase) - Dynamically loaded from config.js -->
+      <div class="login-container" id="login-section"></div>
+
+      <!-- System Penetration Section (Second Phase) -->
+      <div
+        class="hacker-loading"
+        id="hacker-loading-section"
+        style="display: none"
+        aria-hidden="true"
+      >
+        <div class="ascii-logo" id="ascii-logo">
+          ██████╗██╗ ██╗██████╗ ███████╗██████╗ ██████╗ ███████╗██╗ ██╗
+          ██╔════╝╚██╗ ██╔╝██╔══██╗██╔════╝██╔══██╗ ██╔══██╗██╔════╝██║ ██║ ██║
+          ╚████╔╝ ██████╔╝█████╗ ██████╔╝ ██║ ██║█████╗ ██║ ██║ ██║ ╚██╔╝
+          ██╔══██╗██╔══╝ ██╔══██╗ ██║ ██║██╔══╝ ╚██╗ ██╔╝ ╚██████╗ ██║
+          ██████╔╝███████╗██║ ██║ ██████╔╝███████╗ ╚████╔╝ ╚═════╝ ╚═╝ ╚═════╝
+          ╚══════╝╚═╝ ╚═╝ ╚═════╝ ╚══════╝ ╚═══╝
+        </div>
+        <div class="hacker-lines" id="hacker-lines"></div>
+        <div class="loading-progress">
+          <div class="loading-progress-bar" id="loading-bar"></div>
+          <div class="loading-percentage" id="loading-percentage">0%</div>
+        </div>
+        <div class="access-status" id="access-status">PENETRATING SYSTEM</div>
+      </div>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+      ↑
+    </button>
+
+    <canvas id="matrix-canvas"></canvas>
+    <div class="cyber-grid"></div>
+
+    <!-- Control Panel -->
+    <div class="control-panel">
+      <button class="control-btn" id="matrix-toggle">Matrix Rain</button>
+      <button class="control-btn" id="music-toggle">Music</button>
+      <button class="control-btn" id="terminal-toggle">Hacker Mode</button>
+      <div class="theme-selector">
+        <div class="theme-btn theme-cyan" data-theme="cyan"></div>
+        <div class="theme-btn theme-pink" data-theme="pink"></div>
+        <div class="theme-btn theme-green" data-theme="green"></div>
+        <div class="theme-btn theme-orange" data-theme="orange"></div>
+      </div>
+    </div>
+
+    <!-- Floating Particles -->
+    <div class="particle" style="left: 10%; animation-delay: 0s"></div>
+    <div class="particle" style="left: 30%; animation-delay: 2s"></div>
+    <div class="particle" style="left: 50%; animation-delay: 4s"></div>
+    <div class="particle" style="left: 70%; animation-delay: 1s"></div>
+    <div class="particle" style="left: 90%; animation-delay: 3s"></div>
+
+    <div class="container">
+      <header>
+        <div class="avatar-container">
+          <div class="avatar-placeholder">👨‍💻</div>
+        </div>
+        <h1 class="logo glitch">ÇAĞRI ÖZAY</h1>
+        <p class="tagline typing-text" id="typing-text"></p>
+      </header>
+
+      <!-- Stats Dashboard -->
+      <section class="terminal">
+        <div class="terminal-header">&gt; stats.load()</div>
+        <div class="stats-grid" id="stats-grid">
+          <!-- Stats will be loaded from config.js -->
+        </div>
+      </section>
+
+      <!-- GitHub Style Contribution Graph -->
+      <section class="terminal">
+        <div class="terminal-header">&gt; activity.visualize()</div>
+        <div class="contribution-graph">
+          <h3 class="graph-title">Yıllık Aktivite Haritası</h3>
+          <div class="graph-grid" id="contribution-grid"></div>
+        </div>
+      </section>
+
+      <!-- About Terminal -->
+      <section class="terminal">
+        <div class="terminal-header">&gt; whoami</div>
+        <div class="terminal-content" id="about-content">
+          <!-- About text will be loaded from config.js -->
+        </div>
+      </section>
+
+      <!-- Hacker Terminal Simulator -->
+      <section
+        class="terminal"
+        id="hacker-terminal-section"
+        style="display: none"
+        aria-hidden="true"
+      >
+        <div class="terminal-header">&gt; system.access()</div>
+        <div class="hacker-terminal" id="hacker-terminal">
+          <!-- Terminal messages will be loaded dynamically -->
+        </div>
+      </section>
+
+      <!-- Experience Timeline -->
+      <section class="terminal">
+        <div class="terminal-header">&gt; experience.timeline()</div>
+        <div class="timeline" id="experience-timeline">
+          <!-- Experiences will be loaded from config.js -->
+        </div>
+      </section>
+
+      <!-- Certificates & Achievements -->
+      <section class="terminal">
+        <div class="terminal-header">&gt; achievements.display()</div>
+        <div class="achievement-grid" id="achievements-grid">
+          <!-- Achievements will be loaded from config.js -->
+        </div>
+      </section>
+
+      <!-- Skills Terminal -->
+      <section class="terminal">
+        <div class="terminal-header">&gt; skills.analyze()</div>
+        <div class="skills-container" id="skills-container">
+          <!-- Skills will be loaded from config.js -->
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section class="terminal">
+        <div class="terminal-header">&gt; projects.load()</div>
+        <div class="projects-grid" id="projects-grid">
+          <!-- Projects will be loaded from config.js -->
+        </div>
+      </section>
+
+      <!-- Blog/Articles -->
+      <section class="terminal">
+        <div class="terminal-header">&gt; blog.recent()</div>
+        <div class="blog-grid" id="blog-grid">
+          <!-- Blog posts will be loaded from config.js -->
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section class="terminal">
+        <div class="terminal-header">&gt; testimonials.show()</div>
+        <div class="testimonial-slider" id="testimonial-slider">
+          <!-- Testimonials will be loaded from config.js -->
+          <button
+            class="testimonial-nav testimonial-prev"
+            onclick="changeTestimonial(-1)"
+            aria-label="Previous testimonial"
+          >
+            ◄
+          </button>
+          <button
+            class="testimonial-nav testimonial-next"
+            onclick="changeTestimonial(1)"
+            aria-label="Next testimonial"
+          >
+            ►
+          </button>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section class="terminal">
+        <div class="terminal-header">&gt; contact.init()</div>
+        <div class="contact-grid" id="contact-grid">
+          <!-- Contact links will be loaded from config.js -->
+        </div>
+
+        <!-- Contact Form -->
+        <form class="contact-form" id="contact-form">
+          <div class="form-group">
+            <label for="name">İsim</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Adınızı girin..."
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">E-Mail</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="E-mail adresinizi girin..."
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="subject">Konu</label>
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              placeholder="Mesaj konusu..."
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="message">Mesaj</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Mesajınızı yazın..."
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Gönder</button>
+        </form>
+      </section>
+
+      <footer>
+        <p>&copy; 2025 ÇAĞRI ÖZAY | Gelecek Şimdi Kodlanıyor...</p>
+      </footer>
+    </div>
+
+    <!-- Project Modal -->
+    <div class="project-modal" id="project-modal">
+      <div class="modal-content">
+        <button
+          class="modal-close"
+          onclick="closeProjectModal()"
+          aria-label="Close modal"
+        >
+          ✕
+        </button>
+        <h2 class="modal-title" id="modal-title"></h2>
+        <div class="modal-image" id="modal-image"></div>
+        <div class="modal-description" id="modal-description"></div>
+        <div class="tech-tags" id="modal-tags"></div>
+        <div class="modal-features">
+          <h3>Özellikler</h3>
+          <ul id="modal-features"></ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Music Player -->
+    <div
+      class="music-player"
+      id="music-player"
+      style="display: none"
+      aria-hidden="true"
+    >
+      <div class="player-title">🎵 Cyberpunk Ambient</div>
+      <div class="player-controls">
+        <button
+          class="player-btn"
+          id="play-btn"
+          onclick="playMusic()"
+          aria-label="Play music"
+        >
+          ▶
+        </button>
+        <button
+          class="player-btn"
+          id="pause-btn"
+          onclick="pauseMusic()"
+          aria-label="Pause music"
+        >
+          ⏸
+        </button>
+        <button
+          class="player-btn"
+          id="stop-btn"
+          onclick="stopMusic()"
+          aria-label="Stop music"
+        >
+          ⏹
+        </button>
+      </div>
+      <input
+        type="range"
+        class="volume-control"
+        id="volume-control"
+        min="0"
+        max="100"
+        value="50"
+        onchange="changeVolume(this.value)"
+        aria-label="Volume control"
+      />
+      <audio id="background-music" loop preload="auto">
+        <source src="./music.mp3" type="audio/mpeg" />
+        <source src="music.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+      <div
+        class="music-status"
+        style="
+          display: none;
+          color: var(--neon-cyan);
+          font-size: 0.7rem;
+          text-align: center;
+          margin-top: 5px;
+        "
+      ></div>
+    </div>
+
+    <!-- External Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <!-- Configuration (must load first) -->
+    <script src="config.js"></script>
+
+    <!-- Modular JavaScript Files -->
+    <script src="js/login-loader.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/matrix.js"></script>
+    <script src="js/loaders.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/music.js"></script>
+    <script src="js/cursor.js"></script>
+    <script src="js/init.js"></script>
+  </body>
+</html>

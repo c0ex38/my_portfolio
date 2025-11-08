@@ -1,0 +1,177 @@
+/* ========================================
+   RESPONSIVE STYLES
+   Media Queries for Mobile/Tablet
+   ======================================== */
+
+/* Restore cursor for mobile */
+@media (max-width: 768px) {
+  body {
+    cursor: auto;
+  }
+
+  .custom-cursor,
+  .cursor-trail {
+    display: none;
+  }
+
+  /* Header */
+  .logo {
+    font-size: 2.5rem;
+  }
+
+  .tagline {
+    font-size: 1rem;
+  }
+
+  /* Grids */
+  .projects-grid,
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Control Panel */
+  .control-panel {
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+  }
+
+  /* Timeline */
+  .timeline::before {
+    left: 20px;
+  }
+
+  .timeline-item {
+    flex-direction: column !important;
+  }
+
+  .timeline-content {
+    width: 100%;
+    margin-left: 40px;
+  }
+
+  /* Stats Grid */
+  .stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  /* Skills */
+  .skills-container {
+    grid-template-columns: 1fr;
+  }
+
+  /* Contribution Graph */
+  .graph-grid {
+    grid-template-columns: repeat(26, 1fr);
+  }
+
+  /* Achievement Grid */
+  .achievement-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Login Screen */
+  .login-container {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .login-icon {
+    font-size: 3rem;
+  }
+
+  .login-title {
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+  }
+
+  .login-input-wrapper {
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  /* Loading Screen */
+  .hacker-loading {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .ascii-logo {
+    font-size: 0.3rem;
+    line-height: 0.3rem;
+  }
+
+  /* Modal */
+  .modal-content {
+    padding: 20px;
+  }
+
+  .modal-title {
+    font-size: 1.5rem;
+  }
+
+  /* Contact Grid */
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Music Player */
+  .music-player {
+    min-width: 200px;
+  }
+
+  /* Back to Top */
+  .back-to-top {
+    bottom: 80px;
+  }
+}
+
+/* Tablet Landscape */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    max-width: 900px;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .achievement-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .graph-grid {
+    grid-template-columns: repeat(40, 1fr);
+  }
+}
+
+/* Large Screens */
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1600px;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .achievement-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Ultra Wide Screens */
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1800px;
+  }
+
+  .logo {
+    font-size: 5rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
